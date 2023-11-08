@@ -1,10 +1,10 @@
-package org.example;
+package org.example.laba1;
 
 import java.util.Arrays;
 /*
 Класс самого контейнера
  */
-class Container<T> {
+public class Container<T> {
     /**
       @param INIT_SIZE размер изначального массива
      */
@@ -39,6 +39,7 @@ class Container<T> {
     @param index - индекс элемента который надо вернуть
     */
     public T get(int index) {
+        //if (index==null) return;  
         return (T) array[index];
     }
 
@@ -64,6 +65,7 @@ class Container<T> {
       @param deleteValue - значение которое надо удалить из контейнера
       */
      public void removeValue(T deleteValue){
+         //if (deleteValue==null) return;
          int index=pointer;
          for (int i=0;i<pointer;i++ ) {
              if (array[i] == deleteValue) {
@@ -86,7 +88,7 @@ class Container<T> {
      @Override
      public String toString() {
          Object[] arrayToOut = new Object[pointer];
-         System.arraycopy(array, 0, arrayToOut, 0, pointer);
+         System.arraycopy(array, 0, arrayToOut, 0, pointer);//чтобы null не выводило
          return Arrays.toString(arrayToOut);
      }
 
