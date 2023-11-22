@@ -9,12 +9,12 @@ import java.util.Properties;
 
 public class Injector {
     public static void main(String[] args) throws IOException, IllegalAccessException, NoSuchFieldException, ClassNotFoundException, InstantiationException, InvocationTargetException, NoSuchMethodException {
-        SomeBean someBean = new SomeBean();//Делаем бин
-        inject(someBean);// запускаем функцию
-        someBean.foo();// Проверяем
+        SomeBean sb =
+                (new Injector()).inject(new SomeBean());
+        sb.foo();
 
     }
-    public static <T> void inject(T object) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public static <T> T inject(T object) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         //настраиваем путь к файлу откуда будем брать имена
         File file = new File("D:/crusader/sddfg/laba1/src/main/resources/properties");
         Properties properties = new Properties();
@@ -43,6 +43,6 @@ public class Injector {
 
             }
         }
-
+        return object;
     }
 }
